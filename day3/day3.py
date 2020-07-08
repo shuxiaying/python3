@@ -37,15 +37,22 @@ print(tuple_new2)#((1,), (1, 2, 3, 4, 5))
 dict1={}#空字典
 dict2={"a":100,"b":100,"c":101,"d":102,}#非空字典
 print(dict2)#{'a': 100, 'b': 100, 'c': 101, 'd': 102}
-#1. 更改字典对象
-dict2["a"]=99
-print(dict2)#{'a': 99, 'b': 100, 'c': 101, 'd': 102}
-#2. 添加对象
-#dict2.update({"e":103})
+#1. 添加对象，前提添加的key在列表中不存在
+#使用update()添加
+dict2.update({"e":103})
 print(dict2)#{'a': 99, 'b': 100, 'c': 101, 'd': 102, 'e': 103}
-#3. 删除对象 del dict[]
-#del dict2["c"]
-print(dict2)#{'a': 99, 'b': 100, 'd': 102, 'e': 103}
+#使用赋值添加
+dict2["f"]="104"
+print(dict2)
+#2. 修改对象值dict[‘key’]= ‘新的值’
+dict2['a']='99'#111
+print(dict2['a'])#99
+#3. 删除对象
+# 使用del dict[key]删除
+del dict2["e"]
+print(dict2)#{'a': '99', 'b': 100, 'c': 101, 'd': 102}
+# 使用pop(key)删除键值对并返回键值对
+print(dict2.pop)
 #4. 删除字典del dict
 # del dict2
 # print(dict2)#NameError: name 'dict2' is not defined
