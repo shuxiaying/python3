@@ -26,21 +26,20 @@ else:
 如果大于就提示：您预测的数字大了，还剩下x次机会！，
 如果刚好猜中，提示您真幸运，恭喜您猜中了。
 """
-"""
-import random
-right=random.randint(1,100)
-i,s=0,5
-while i<5:
-    num2=int(input("请输入数字："))
+
+import random#导入random函数
+right=random.randint(1,100)#赋值right为1到100的随机数
+i,s=0,5#初始化i与s的值，s为总游戏次数
+while i<s:
+    num2=int(input("请输入数字："))#标准输入
     i+=1
     if num2 == right:
         print("您真幸运，恭喜您猜中了。")
     elif num2 > right:
         print("您预测的数字大了，还剩下"+str(s-i)+"次机会！")
     else:
-        print("您预测的数字小了，还剩下" + str(s - i) + "次机会！")
+        print("您预测的数字小了，还剩下"+str(s-i)+"次机会！")
 print("游戏结束")
-"""
 """
 5、打印水仙花数：
 水仙花数是指一个 n 位数（n≥3 ），它的每个位上的数字的 n 次幂之和等于它本身。
