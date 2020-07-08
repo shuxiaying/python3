@@ -37,15 +37,28 @@ print(tuple_new2)#((1,), (1, 2, 3, 4, 5))
 dict1={}#空字典
 dict2={"a":100,"b":100,"c":101,"d":102,}#非空字典
 print(dict2)#{'a': 100, 'b': 100, 'c': 101, 'd': 102}
-#更改字典对象
+#1. 更改字典对象
 dict2["a"]=99
 print(dict2)#{'a': 99, 'b': 100, 'c': 101, 'd': 102}
-#添加对象
-dict2.update({"e":103})
+#2. 添加对象
+#dict2.update({"e":103})
 print(dict2)#{'a': 99, 'b': 100, 'c': 101, 'd': 102, 'e': 103}
-#删除对象 del dict[]
-del dict2["c"]
+#3. 删除对象 del dict[]
+#del dict2["c"]
 print(dict2)#{'a': 99, 'b': 100, 'd': 102, 'e': 103}
-#删除字典del dict
+#4. 删除字典del dict
 # del dict2
 # print(dict2)#NameError: name 'dict2' is not defined
+#5. 打印字典
+#使用dict.keys()打印所有key值，返回一个迭代器，可以用list()转换成列表
+print(dict2.keys(),dict2.values())
+#dict_keys(['a', 'b', 'c', 'd']) dict_values([99, 100, 101, 102])
+print(list(dict2.keys()),list(dict2.values()))
+#['a', 'b', 'c', 'd'] [99, 100, 101, 102]
+#使用for循环打印
+for k,v in dict2.items():
+    print(k,":",v)
+# a : 99
+# b : 100
+# c : 101
+# d : 102
