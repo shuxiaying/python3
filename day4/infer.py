@@ -30,3 +30,10 @@ print({k:v for k,v in dict1.items()})
 print({x for x in dict1.values()})
 print({x for x in dict1.keys()})
 print({x for x in dict1.items()})
+# 迭代iteration:迭代就是重复运行一段代码语句块的能力，
+# 就好比在一个容器中进行一层一层遍历数据，在应用过程中for循环最为突出
+
+from collections.abc import Iterable, Iterator
+list1 = [1, 3, 5, 7, 9]
+print(isinstance(list1,Iterable))
+print(isinstance(list1,Iterator))
