@@ -44,11 +44,10 @@ def re_times():
     times_list.clear()
     times_set = set()
     times_set.clear()
-    re_new=re_mod(0)
-    for k,v in re_new.items():
+    for k,v in re_mod(0).items():
         times_list.append(v)
-    times_set.update(times_list)
-    return times_set
+    times_set.update(times_list)#利用集合去重
+    return times_set #返回各个成员记录次数集合
 #获取被点到记录最大次数
 def max_call():
     k=max(re_times())
@@ -66,6 +65,7 @@ while start_call is str():
     #     print("已初始化")
     #     break
     n = call_name()#随机点名
+    re_mod(0)
     s=call_times(n) #被点成员今日被点次数
     m=max_call() #今日点名记录最大次数
     if s==m and re_times() !=1: #判断是否为最大次数且各个成员记录次数是否不同
