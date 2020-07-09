@@ -13,7 +13,7 @@
 dict1={}#空字典
 dict2={"a":100,"b":100,"c":101,"d":102,}#非空字典
 print(dict2)#{'a': 100, 'b': 100, 'c': 101, 'd': 102}
-#1. 添加对象，前提添加的key在列表中不存在
+#1. 添加对象，前提添加的key不存在
 #使用update()添加
 dict2.update({"e":103})
 print(dict2)#{'a': 99, 'b': 100, 'c': 101, 'd': 102, 'e': 103}
@@ -88,3 +88,7 @@ site={'name':"百度",'url':"www.baidu.com"}
 print("网站名:{name}\n地址:{url}".format(**site))
 # 网站名:百度
 # 地址:www.baidu.com
+list1=[1,2,3]
+dict_new={'a':"4",'b':"5"}
+list1.extend(dict_new)
+print(list1)
