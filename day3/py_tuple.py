@@ -33,3 +33,4 @@ print(tuple_new2)#((1,), (1, 2, 3, 4, 5))
 # 6.复制元组
 tuple_new3=tuple3*5
 print(tuple_new3)#(1, 1, 1, 1, 1)
+
