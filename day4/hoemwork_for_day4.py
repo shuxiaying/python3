@@ -36,9 +36,14 @@ for i in range(0,101):
 print(set2)
 # 5、写出九九乘法表（方法不限）
 for a in range(1,10):
-    for b in range(1,10):
-        if a<=b:
-            s=a*b
-            print(str(a)+"*"+str(b)+"="+str(s))
+    for b in range(1,a+1):
+        s=a*b
+        print(str(b)+"*"+str(a)+"="+str(s),end='\t')
+    print("\r")
 # 6、定义一个函数，练习不同的传参方法。
-# 7、复习进入的内容，巩固每天的知识点。
+def my_fun(a,*b,**c):
+    print('a=',a,'\nb=',b,'\nc=',c)
+my_fun(1)
+my_fun('tom',2,3)
+my_fun('tom',2,(3,4),{5,6},{'a':7,'b':8},**{'c':7,'d':8})
+my_fun('tom',2,(3,4),{5,6},*{'a':7,'b':8},**{'c':7,'d':8})
