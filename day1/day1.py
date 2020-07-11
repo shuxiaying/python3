@@ -41,7 +41,6 @@ print(a)
 print(b)
 print(c)
 
-import math
 print("今天7月%d日，天气%s，PM2.5指数%0.2f" %(6,"",100.00))
 
 print("第一行",end='')
