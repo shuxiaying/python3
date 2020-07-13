@@ -75,12 +75,16 @@ class Get_Excel_Data:
         print()
 #获取MySQL数据
 class Mysql_Connect():
-    def msq_cnt(self,host,port,user,passwd):
-        yield my_cnt = pymysql.connect(host=host,
-                                 port=port,
-                                 user=user,
-                                 password=passwd,
-                                 database='test',
-                                 charset='utf8')
-        yield my_data = my_cnt.cursor()
-     my_cnt=next(msq_cnt())
+    my_cnt=pymysql.connect(host=host,
+                    port=port,
+                    user=user,
+                    password=password,
+                    database='test',
+                    charset='utf8')
+    my_data = my_cnt.cursor()
+    def msq_sql(self,sql):
+        my_data.execute(sql)
+        my_cnt.commit()
+        get_data = my_data.fetchall()
+        print(get_data)
+        my_cnt.close()
