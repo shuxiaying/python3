@@ -32,5 +32,5 @@ tm=os.path.getmtime('c:\\test')
 print(tm)
 # 将epoch格式时间转成字符串格式显示
 import time
-dm=time.strftime('%Y-%m-%d %H:%M:%S',time.gmtime(tm))
+dm=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(tm))
 print(dm)

@@ -35,3 +35,11 @@ class CreatCopy:
                 with open(filepath, mode='w') as fl:
                     fl.write(str(*content))
                 continue
+import time
+import datetime
+print(datetime.date(1996,8,1).weekday())
+import calendar
+cal=calendar.month(1996,8)
+print(cal)
+with open('c:\\calendar.txt',mode='w',encoding='utf8') as fl:
+    fl.write(cal)

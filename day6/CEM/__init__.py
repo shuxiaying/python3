@@ -18,10 +18,15 @@ class GetCsvData:
         :param file_path:
         :return:
         """
-        with open(file_path,mode='r') as f:
-            f=csv.reader(f)
-            for i in f:
-                print(i[0])
+        try:
+            with open(file_path, mode='r') as f:
+                f = csv.reader(f)
+                for i in f:
+                    for t in i:
+                        print(t, end='\t')
+                    print()
+        except Exception:
+            raise Exception('The file does not exists!')
 
 # 覆盖文件写入
 class WriteCsv:
@@ -66,11 +71,28 @@ class WriteExcel:
 #获取excel表数据
 class GetExcelData:
     def xlsx_file(self,filepath,sheet_name):
-        get_wb = openpyxl.load_workbook(filepath)
-        get_sheet = get_wb[sheet_name]
-        for get_tuple in get_sheet:
-            for get_cell in get_tuple:
-                print( get_cell.value)
+        global get_wb
+        try:
+            get_wb = openpyxl.load_workbook(filepath)
+        except Exception:
+            raise Exception('The file does not exists!')
+        try:
+            get_sheet = get_wb[sheet_name]
+        except Exception:
+            raise Exception('error: check the sheet name. ')
+        try:
+            for get_tuple in get_sheet:
+                for get_cell in get_tuple:
+                    print(get_cell.value, end='\t')
+                print()
+        except Exception:
+            raise Exception('error: the file maybe empty. ')
+if __name__ == '__main__':
+    wb=openpyxl.load_workbook('c:\\test1.xlsx')
+    gs=wb['Sheet']
+    for get_tuple in gs:
+        for get_cell in get_tuple:
+            print(get_cell.value,end='\t')
         print()
 #获取MySQL数据
 class MysqlConnect:
@@ -81,7 +103,7 @@ class MysqlConnect:
     database = 'database'
     charset = 'utf8'
     def msq_sql(self,sql):
-        global my_cnt
+        global my_cnt, my_data
         try:
             my_cnt = pymysql.connect(host=self.host,
                                  port=self.port,
@@ -90,18 +112,21 @@ class MysqlConnect:
                                  database=self.database,
                                  charset=self.charset)
         except Exception:
-           Exception("Database connect fail, check the value of host, user, password, database and port")
-        my_data = my_cnt.cursor()
+           raise Exception("Database connect fail, check the value of host, user, password, database and port")
+        else:
+            my_data = my_cnt.cursor()
         try:
             my_data.execute(sql)
             my_cnt.commit()
         except Exception:
-            Exception('ERROR 1064 (42000): You have an error in your SQL syntax; '
+            raise Exception('ERROR 1064 (42000): You have an error in your SQL syntax; '
                   'check the manual that corresponds to your MySQL server '
                   'version for the right syntax to use near \'',sql,'\' at line 1')
-        get_data = my_data.fetchall()
-        for i in get_data:
-            for t in i:
-                print(t,end='\t')
-            print('\r')
-        my_cnt.close()
+        else:
+            get_data = my_data.fetchall()
+            for i in get_data:
+                for t in i:
+                    print(t,end='\t')
+                print('\r')
+        finally:
+            my_cnt.close()
