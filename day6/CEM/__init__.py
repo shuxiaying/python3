@@ -7,6 +7,8 @@
 # Description:
 #-----------------------------------------------------------------------------------
 import csv
+from collections.abc import Iterable
+
 import openpyxl
 from openpyxl import Workbook
 import pymysql
@@ -86,14 +88,7 @@ class GetExcelData:
                     print(get_cell.value, end='\t')
                 print()
         except Exception:
-            raise Exception('error: the file maybe empty. ')
-if __name__ == '__main__':
-    wb=openpyxl.load_workbook('c:\\test1.xlsx')
-    gs=wb['Sheet']
-    for get_tuple in gs:
-        for get_cell in get_tuple:
-            print(get_cell.value,end='\t')
-        print()
+            raise Exception('The sheet maybe empty.')
 #获取MySQL数据
 class MysqlConnect:
     host = 'host'
