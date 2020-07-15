@@ -59,32 +59,32 @@ def call_times(n):
     record=re_mod(n,0)
     return record[n]
 pass
-start_call=input("点击Enter开始点名")
-while start_call is str():
-    # 获取当前时间-月份
-    re_month = time.localtime(time.time()).tm_mon
-    # 获取当前时间-日
-    now = time.localtime(time.time()).tm_mday
-    n = call_name()  # 随机点名
-    re_mod(n,0)
-    s = call_times(n)  # 被点成员今日被点次数
-    m = max_call(n)  # 今日点名记录最大次数
-    mod_date(now)
-    if s == m or re_times(n) != 1:  # 判断是否为最大次数且各个成员记录次数是否相同
-        continue
-    else:
-        print(call_name())  # 输出被点名成员
-        re_new = re_mod(n, 1)  # 修改记录，被点名成员记录次数加1
-        print("当日被点次数：", call_times(n))  # 输出被点名成员今日记录次数
-        next_call = input("点击Enter继续，输入任意内容点击Enter退出点名")
-        if len(next_call) > 0:
-            print("为保证公平，关闭程序前请及时手动更新记录！！！")
-            print(str(re_month) + "月" + str(now) + "日点名记录", re_new)
-            i = input("我已保存 Y/N，删除数据")
-            if i in 'yY':
-                break
-            else:
-                i = input("我以保存 Y/N，删除数据")
-                re_reset()
-        else:
-            continue
+# start_call=input("点击Enter开始点名")
+# while start_call is str():
+#     # 获取当前时间-月份
+#     re_month = time.localtime(time.time()).tm_mon
+#     # 获取当前时间-日
+#     now = time.localtime(time.time()).tm_mday
+#     n = call_name()  # 随机点名
+#     re_mod(n,0)
+#     s = call_times(n)  # 被点成员今日被点次数
+#     m = max_call(n)  # 今日点名记录最大次数
+#     mod_date(now)
+#     if s == m or re_times(n) != 1:  # 判断是否为最大次数且各个成员记录次数是否相同
+#         continue
+#     else:
+#         print(call_name())  # 输出被点名成员
+#         re_new = re_mod(n, 1)  # 修改记录，被点名成员记录次数加1
+#         print("当日被点次数：", call_times(n))  # 输出被点名成员今日记录次数
+#         next_call = input("点击Enter继续，输入任意内容点击Enter退出点名")
+#         if len(next_call) > 0:
+#             print("为保证公平，关闭程序前请及时手动更新记录！！！")
+#             print(str(re_month) + "月" + str(now) + "日点名记录", re_new)
+#             i = input("我已保存 Y/N，删除数据")
+#             if i in 'yY':
+#                 break
+#             else:
+#                 i = input("我以保存 Y/N，删除数据")
+#                 re_reset()
+#         else:
+#             continue
