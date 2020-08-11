@@ -33,14 +33,17 @@
 #     list3.clear()
 # print(list4)
 
-dd={'a':5,'b':5,"c":5,'d':5}
-s=0
-n=None
-for k in dd:
-    v=dd[k]
-    if s<v:
-        s,v=v,s
-        n=k
-    else:
-        continue
-print({n:s})
+# dd={'a':5,'b':5,"c":5,'d':5}
+# s=0
+# n=None
+# for k in dd:
+#     v=dd[k]
+#     if s<v:
+#         s,v=v,s
+#         n=k
+#     else:
+#         continue
+# print({n:s})
+
+str5=',www,bai,com'
+print(str5.split(','))
