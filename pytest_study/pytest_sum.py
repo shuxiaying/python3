@@ -8,42 +8,25 @@
 #-----------------------------------------------------
 import pytest
 
-# @pytest.fixture()
-# def decorator():
-#     @pytest.fixture(params=[1,2,3])
-#     def wraptor(request):
-#         results=request.param
-#         return results
-#     return wraptor
+# 使用pytest参数化
+@pytest.fixture(scope='function', params=[(1,3,4),(1,3,5),[3,7,10]])
+def fix2(request):
+    yield request.param
 
-@pytest.fixture()
-def decorator(data):
-    def wraptor(func):
-        @pytest.fixture(params=data)
-        def param_func(request):
-            print(request.param)
-            results = func(request.param)
-            return results
-        print(param_func)
-        return param_func
-    return wraptor
+def test_sum(fix2):
+    result=sum(fix2)
+    print(fix2,result)
 
 
-# def decorator(dta):
-#     def fix1(func):
-#         # @parameterized.expand(dta)
-#         def wraptor(avg):
-#             print('2',avg)
-#             return func(avg)
-#         print('1',wraptor(dta))
-#         return wraptor
-#     return fix1
+def fix1(data):
+    @pytest.fixture(scope='function', params=data)
+    def fix3(request):
+        print(request.param)
+        yield request.param
+    yield fix3
 
-@decorator([(1, 3, 4), (1, 3, 5), [3, 7, 10]])
-def test_1(*argv):
-    print(argv)
+def test_1():
+    fix1([(1,3,4),(1,3,5),[3,7,10]])
 
-
-# @decorator
-# def test_sum(argv):
-#     print(argv)
+if __name__ == '__main__':
+    pytest.main()
