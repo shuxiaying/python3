@@ -82,7 +82,6 @@ class CallName:
         return s
 
     def start_call(self):
-        record=None
         while 1:
             try:
                 record=self.read_records()
@@ -117,4 +116,5 @@ if __name__ == '__main__':
     #     print('hh')
     # else:
     #     print(dt2)
+    print(cn.start_call())
 

@@ -7,7 +7,6 @@
 # Description:
 #-----------------------------------------------------------------------------------
 import csv
-from collections.abc import Iterable
 
 import openpyxl
 from openpyxl import Workbook
