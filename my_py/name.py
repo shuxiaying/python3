@@ -13,7 +13,7 @@ namelist = ["唐建军", "孙家耀", "张辛碧", "宋羽"]
 #创建点名日志-日
 re_date={6,7,8}
 #创建记录
-record = {"唐建军":0, "孙家耀":0, "张辛碧":0, "宋羽":0}
+record = {}
 #更新日志-日
 def mod_date(nd):
     if nd not in re_date:
