@@ -107,7 +107,7 @@ class ForGUI:
         try:
             cname = Call_Name()
         except:
-            print("未找到文件：./花名册.xlsx")
+            v.set("未找到文件：./花名册.xlsx")
         else:
             try:
                 record = cname.read_record()  # 读取记录
