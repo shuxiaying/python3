@@ -226,7 +226,6 @@ name_list=ForGUI().get_name_list()
 def info():
     t = random.randint(1, len(name_list))
     v.set(name_list[t - 1])
-    msg.after(500, info)
 
 def bt_func():
     stat = ForGUI().get_stat()
@@ -235,10 +234,11 @@ def bt_func():
         w.set("就决定是你了")
         ForGUI().mod_stat(1)
     else:
+        ForGUI().mod_stat(0)
+        msg.after_cancel(1)
         name = ForGUI().start()
         v.set(name)
         w.set("开始")
-        ForGUI().mod_stat(0)
 bt = tk.Button(f2, textvariable=w, command=bt_func, bd=4, width=20, font=14)
 bt.pack()
 root.mainloop()
