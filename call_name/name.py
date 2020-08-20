@@ -102,8 +102,7 @@ class Call_Name:
         return record[name]
 
 class ForGUI:
-    _cname=None
-    _re_date=None
+    re_date=None
     def __init__(self):
         try:
             cname = Call_Name()
@@ -115,30 +114,31 @@ class ForGUI:
             except:
                 cname.mk_record()  # 读取异常则重新创建记录
                 record = cname.read_record()
-            self._re_date=record["date"]  # 获取使用日期记录
+            self.re_date=record["date"]  # 获取使用日期记录
             # 每5天初始化一次记录
-            if len(self._re_date) > 5:
+            if len(self.re_date) > 5:
                 cname.mk_record()  # 重新创建记录
-        self._cname=cname
+
     # 开始点名，输出有效姓名：姓名对应记录不为最大次数
     def start(self):
-        times = self._cname.re_times()  # 获取记录次数
+        cname = Call_Name()
+        times = cname.re_times()  # 获取记录次数
         max_times = max(times)  # 获取记录最大次数
         min_times = min(times)  # 获取记录最小次数
         td = str(datetime.datetime.today().date())  # 获取当前日期
-        if not td in re_date:
-            self._cname.re_mod(re_date=td)
+        if not td in self.re_date:
+            cname.re_mod(re_date=td)
         while True:
-            name = self._cname.call_name()  # 产生随机姓名
-            times = self._cname.call_times(name)  # 获取被点到成员记录次数
+            name = cname.call_name()  # 产生随机姓名
+            times = cname.call_times(name)  # 获取被点到成员记录次数
             if max_times != min_times:
                 if times < max_times:
-                    self._cname.re_mod(name=name)  # 修改记录
+                    cname.re_mod(name=name)  # 修改记录
                     return name
                 else:
                     continue
             else:
-                self._cname.re_mod(name=name)  # 修改记录
+                cname.re_mod(name=name)  # 修改记录
                 return name
 
     # 查看花名册
@@ -174,11 +174,13 @@ class ForGUI:
 
     # 获取按钮状态
     def get_stat(self):
-        record=self._cname.read_record()
+        cname = Call_Name()
+        record=cname.read_record()
         return record["stat"]
     # 修改按钮状态
     def mod_stat(self,n):
-        self._cname.re_mod(stat=n)
+        cname = Call_Name()
+        cname.re_mod(stat=n)
 
 # 创建窗口
 root = tk.Tk(className="点名工具")
