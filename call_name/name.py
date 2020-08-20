@@ -201,8 +201,8 @@ root.resizable(0, 0)
 m1 = tk.Menu(root, tearoff=False)
 # 创建子菜单，不显示分窗
 MenuBar = tk.Menu(m1, tearoff=False)
-MenuBar.add_command(label='花名册', command=open_name_excel)
-MenuBar.add_command(label='点名记录', command=open_record)
+MenuBar.add_command(label='花名册', command=ForGUI.open_name_excel)
+MenuBar.add_command(label='点名记录', command=ForGUI.open_record)
 # 将子菜单加入菜单栏中
 m1.add_cascade(label='查看', menu=MenuBar)
 m1.add_command(label='Exit', command=root.quit)
@@ -222,23 +222,23 @@ w = tk.StringVar()  # 创建变量
 w.set("开始点名喽")
 
 # 循环随机显示花名册名单
-name_list=get_name_list()
+name_list=ForGUI().get_name_list()
 def info():
     t = random.randint(1, len(name_list))
     v.set(name_list[t - 1])
     msg.after(500, info)
 
-stat = datetime.datetime.now().time()
 def bt_func():
-    m=get_stat()
-    if m==0:
+    stat = ForGUI().get_stat()
+    if stat==0:
         root.after(500, info)
         w.set("就决定是你了")
+        ForGUI().mod_stat(1)
     else:
-        root.after_cancel(1)
-        name = start()
+        name = ForGUI().start()
         v.set(name)
         w.set("开始")
+        ForGUI().mod_stat(0)
 bt = tk.Button(f2, textvariable=w, command=bt_func, bd=4, width=20, font=14)
 bt.pack()
 root.mainloop()
