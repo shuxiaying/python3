@@ -212,25 +212,24 @@ root.config(menu=m1)
 f1 = tk.Frame(root, bd=1, height=100, width=200)
 f1.pack(pady=10)
 v = tk.StringVar()  # 创建变量
-v.set("别紧张")
 msg = tk.Label(f1, textvariable=v, font=('', 48), fg="green")  # 创建文本控件
 msg.pack()
 f2 = tk.Frame(root)
 f2.pack(pady=20)
 # 创建开始按钮
 w = tk.StringVar()  # 创建变量
-w.set("开始点名喽")
+w.set("就决定是你了")
 
 # 循环随机显示花名册名单
 name_list=ForGUI().get_name_list()
 def info():
     t = random.randint(1, len(name_list))
     v.set(name_list[t - 1])
-
+    msg.after(500, info)
+root.after(500, info)
 def bt_func():
     stat = ForGUI().get_stat()
     if stat==0:
-        root.after(500, info)
         w.set("就决定是你了")
         ForGUI().mod_stat(1)
     else:
