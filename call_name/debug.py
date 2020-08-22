@@ -7,12 +7,15 @@
 # Description:
 #-----------------------------------------------------------------------------------
 import datetime
+import os
 import random
 
 # dy=str(datetime.datetime.today().date())
 # print(type(dy),dy)
 # num = random.randint(3, 4)
 # print(num)
+import tkinter as tk
+
 import openpyxl
 
 # wb = openpyxl.load_workbook("./花名册.xlsx")
@@ -38,12 +41,27 @@ import openpyxl
 # text.pack()
 # root.after(1000,new)
 # root.mainloop()
-
-stat = datetime.datetime.now().time()
-def info():
-    new_stat = datetime.datetime.now().time()
-    if stat.__eq__(new_stat):
-        print("True")
-    else:
-        print("False")
-info()
+# def func1():
+#     print(bt['text'])
+#     bt['command']=func2
+#     bt['text']='fun2'
+#     bt.update()
+# def func2():
+#     print(bt['text'])
+#     bt['command'] = func1
+#     bt['text'] = 'fun1'
+#     bt.update()
+#
+#
+# root=tk.Tk()
+# bt=tk.Button(root,text='fun1',command=func1)
+# bt.pack()
+# root.mainloop()
+# 花名册文件路径
+excel_file_path = "花名册.xlsx"
+# 工作表名
+excel_sheet = "Sheet1"
+# 记录存储文件路径
+file_path = "name_record.json"
+# os.system("%s"%excel_file_path)
+os.system("%s"%file_path)
