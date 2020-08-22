@@ -43,7 +43,7 @@ class Call_Name:
                     list_data.append(lab.value)
                     break
         except:
-            list_data=['空名单？']
+            list_data = ['空名单？']
         self._namelist = list_data
 
     # 初始化记录
@@ -159,7 +159,7 @@ class ForGUI:
         try:
             os.system("start %s&exit" % excel_file_path)
         except:
-            msg["text"]='\n未找到花名册╮(╯▽╰)╭\n'
+            msg["text"] = '\n未找到花名册╮(╯▽╰)╭\n'
             msg["font"] = ('', 18)
             msg.update()
 
@@ -168,7 +168,7 @@ class ForGUI:
         try:
             os.system("start %s&exit" % file_path)
         except:
-            msg["text"]='\n未找到点名记录╮(╯▽╰)╭\n'
+            msg["text"] = '\n未找到点名记录╮(╯▽╰)╭\n'
             msg["font"] = ('', 18)
             msg.update()
 
@@ -235,13 +235,10 @@ f2.pack(pady=10)
 
 # 循环随机显示花名册名单
 name_list = ForGUI().get_name_list()
-
-
 def info():
     t = random.randint(1, len(name_list))
     msg["font"] = ('', 44)
     msg["text"] = (name_list[t - 1])
-
 
 def bt_listen():
     while bt["state"] == 'normal':
