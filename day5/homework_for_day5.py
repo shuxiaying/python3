@@ -59,11 +59,11 @@ def cat_spk():
 # tom_spk()
 # cat_spk()
 # 4、封装一个文件，文件中写五个类，父类的一个方法被4个子类重写，实现了不同的行为
-from book import Book_1,Book_2,Book_3,Book_4
-bk1=Book_1()
-bk2=Book_2()
-bk3=Book_3()
-bk4=Book_4()
+# from book import Book_1,Book_2,Book_3,Book_4
+# bk1=Book_1()
+# bk2=Book_2()
+# bk3=Book_3()
+# bk4=Book_4()
 # bk1.price()
 # bk2.price()
 # bk3.price()
@@ -77,25 +77,33 @@ bk4=Book_4()
 # 将list = [7, 4, 3, 67, 34, 1, 8]中的数据从小到大排序，最后输出结果为：[1, 3, 4, 7, 8, 34, 67]：提示冒泡排序，比较大小交换位置，或者用空杯交换原理
 list1=[7, 4, 3, 67, 34, 1, 8]
 list2=list1.copy()
-gs=len(list1)
-i=0
-while i<gs:
-    a=list1[i]
-    t=0
-    while t <gs:
-        b=list2[t]
-        if a<b:
-            list2.insert(t,a)
-            del list2[i]
-            i+=1
+for i in list1:
+    for t in list2:
+        if i<t:
+            list2.remove(i)
+            list2.insert(list2.index(t),i)
             break
-        t+=1
-        if t==gs:
-            list2.insert(t, a)
-            del list2[i]
-            i += 1
-            break
-# print(list2)
+
+
+# gs=len(list1)
+# i=0
+# while i<gs:
+#     a=list1[i]
+#     t=0
+#     while t <gs:
+#         b=list2[t]
+#         if a<b:
+#             list2.insert(t,a)
+#             del list2[i]
+#             i+=1
+#             break
+#         t+=1
+#         if t==gs:
+#             list2.insert(t, a)
+#             del list2[i]
+#             i += 1
+#             break
+print(list2)
 # 7、求1-2+3-4+5 ... 99的所有数的和
 s=0
 for i in range(1,100):
@@ -110,3 +118,5 @@ while s<100:
     x+=1
     s = 2.5 * x - 6 * (x//5)
 # print(x)
+
+# print([i for i in range(1,101) if i%2!=0])

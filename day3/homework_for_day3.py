@@ -53,6 +53,25 @@ list2=[]#定义列表list2装载1000以内的水仙花数
 while i <=1000:
     list1.append(i)#将遍历的数添加到list1中
     i+=1
+list3=[]
+# list3.extend(range(100,1000,1))
+for i in range(100,1000,1):
+    t=str(i)
+    if i==(int(t[0])**3+int(t[1])**3+int(t[2])**3):
+        list3.append(i)
+print(list3)
+def func(n):
+    list4=[]#存放水仙花数
+    for i in range(10**(n-1),10**n,1):#遍历所有n位数
+        num=str(i)
+        s = 0
+        for t in num:#获取每个位上的数字的 n 次幂之和
+            s+=(int(t)**n)
+        if i==s:
+            list4.append(i)
+    return list4
+print(func(4))
+
 #遍历list1中的数
 for t in list1:
     #判断为数字为3位数还是4位数
